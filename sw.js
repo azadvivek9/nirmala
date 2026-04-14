@@ -1,21 +1,25 @@
-const cacheName = 'nirmala-v1';
-const staticAssets = [
-  './',
-  './index.html',
-  './manifest.json',
-  // Yahan apni CSS aur JS files ka path daalein
+const CACHE_NAME = "nirmala-v1";
+
+const urlsToCache = [
+  "/nirmala/",
+  "/nirmala/index.html",
+  "/nirmala/manifest.json",
+  "/nirmala/icon-192.png",
+  "/nirmala/icon-512.png"
 ];
 
-self.addEventListener('install', async e => {
-  const cache = await caches.open(cacheName);
-  await cache.addAll(staticAssets);
-  return self.skipWaiting();
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(urlsToCache);
+    })
+  );
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(res => {
-      return res || fetch(e.request);
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
     })
   );
 });
