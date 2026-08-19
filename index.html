@@ -2,21 +2,21 @@
 <html lang="hi">
 
 <head>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1e40af">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e40af">
 
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/nirmala/sw.js')
-      .then(() => console.log('SW Registered'));
-  });
-}
-</script>
-    
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/nirmala/sw.js')
+                    .then(() => console.log('SW Registered'));
+            });
+        }
+    </script>
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Paisa Collection Manager Pro</title>
@@ -27,27 +27,27 @@ if ('serviceWorker' in navigator) {
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <!-- Html2Canvas for downloading QR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- 🔥 Firebase -->
-<!-- 🔥 Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    
+    <!-- 🔥 Firebase Compat Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyBzoSP46f_V9H0f7ZqgT_CpqgjAmLb8XVY",
-        authDomain: "nirmala-finance.firebaseapp.com",
-        databaseURL: "https://nirmala-finance-default-rtdb.firebaseio.com",
-        projectId: "nirmala-finance",
-        storageBucket: "nirmala-finance.firebasestorage.app",
-        messagingSenderId: "314008995118",
-        appId: "1:314008995118:web:9d65c444dc91f35a33e6bf",
-        measurementId: "G-Q5DHFXN38N"
-    };
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzoSP46f_V9H0f7ZqgT_CpqgjAmLb8XVY",
+            authDomain: "nirmala-finance.firebaseapp.com",
+            databaseURL: "https://nirmala-finance-default-rtdb.firebaseio.com",
+            projectId: "nirmala-finance",
+            storageBucket: "nirmala-finance.firebasestorage.app",
+            messagingSenderId: "314008995118",
+            appId: "1:314008995118:web:9d65c444dc91f35a33e6bf",
+            measurementId: "G-Q5DHFXN38N"
+        };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-</script>
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
     </script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -241,7 +241,7 @@ if ('serviceWorker' in navigator) {
     <nav class="bg-blue-800 text-white p-4 shadow-lg sticky top-0 z-50 no-print">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <h1 class="text-xl font-bold flex items-center gap-2">
-                Nirmala   Fin.
+                Nirmala Fin.
             </h1>
             <div class="flex gap-4 text-sm">
                 <button onclick="switchTab('dashboard')"
@@ -260,15 +260,15 @@ if ('serviceWorker' in navigator) {
         <div id="tab-dashboard" class="tab-content hidden" style="margin-top: 20px;">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 no-print">
                 <div class="glass-card p-6 rounded-3xl shadow-sm border-l-8 border-blue-500">
-                    <p class="text-gray-500 text-sm font-medium">Kul Jama (Total)</p>
+                    <p class="text-gray-500 text-sm font-medium">Total Deposits</p>
                     <h2 class="text-3xl font-black text-blue-600" id="stat-total">₹0</h2>
                 </div>
                 <div class="glass-card p-6 rounded-3xl shadow-sm border-l-8 border-green-500">
-                    <p class="text-gray-500 text-sm font-medium">Is Mahine (This Month)</p>
+                    <p class="text-gray-500 text-sm font-medium">This Month</p>
                     <h2 class="text-3xl font-black text-green-600" id="stat-month">₹0</h2>
                 </div>
                 <div class="glass-card p-6 rounded-3xl shadow-sm border-l-8 border-purple-500">
-                    <p class="text-gray-500 text-sm font-medium">Kul Clients</p>
+                    <p class="text-gray-500 text-sm font-medium">Total Clients</p>
                     <h2 class="text-3xl font-black text-purple-600" id="stat-clients">0</h2>
                 </div>
             </div>
@@ -306,8 +306,6 @@ if ('serviceWorker' in navigator) {
                         <option value="2028">2028</option>
                         <option value="2029">2029</option>
                         <option value="2030">2030</option>
-
-
                     </select>
                     <select id="filter-month" onchange="updateDashboard()"
                         class="p-3 border border-gray-200 rounded-xl text-sm outline-none bg-gray-50">
@@ -555,7 +553,7 @@ if ('serviceWorker' in navigator) {
                     class="h-16 w-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                     ✅</div>
                 <h2 class="text-2xl font-black text-gray-800">Success!</h2>
-                <p class="text-gray-400 text-sm">Naya Client Add Ho Gaya Hai</p>
+                <p class="text-gray-400 text-sm">New Client Added Successfully</p>
             </div>
 
             <div id="qrcode-container"
@@ -585,8 +583,7 @@ if ('serviceWorker' in navigator) {
                 </button>
             </div>
             <button onclick="closeQRModal()"
-                class="w-full bg-blue-50 text-blue-700 font-bold py-4 rounded-2xl hover:bg-blue-100 transition no-print">BAND
-                KAREIN (DONE)</button>
+                class="w-full bg-blue-50 text-blue-700 font-bold py-4 rounded-2xl hover:bg-blue-100 transition no-print">CLOSE</button>
         </div>
     </div>
 
@@ -628,8 +625,7 @@ if ('serviceWorker' in navigator) {
             <div id="modal-icon" class="text-5xl mb-4">✅</div>
             <p id="modal-msg" class="text-gray-800 font-bold text-lg leading-tight mb-6"></p>
             <button onclick="closeModal()"
-                class="bg-blue-600 text-white font-bold px-10 py-4 rounded-2xl w-full shadow-lg shadow-blue-500/20 active:scale-95 transition-transform">THEEK
-                HAI</button>
+                class="bg-blue-600 text-white font-bold px-10 py-4 rounded-2xl w-full shadow-lg shadow-blue-500/20 active:scale-95 transition-transform">OK</button>
         </div>
     </div>
 
@@ -802,6 +798,7 @@ if ('serviceWorker' in navigator) {
 
         function quickAmount(v) { document.getElementById('entry-amount').value = v; }
 
+        // ✅ FIXED FORM SUBMIT FUNCTION
         document.getElementById('entryForm').onsubmit = (e) => {
             e.preventDefault();
             const cid = document.getElementById('entry-client-id').value;
@@ -812,6 +809,7 @@ if ('serviceWorker' in navigator) {
 
             const amt = parseFloat(document.getElementById('entry-amount').value);
             const date = document.getElementById('entry-date').value;
+
             if (editId) {
                 db.ref("records/" + editId).set({
                     id: editId,
@@ -822,12 +820,10 @@ if ('serviceWorker' in navigator) {
                     date: date
                 }).then(() => {
                     resetEntryForm();
-                    showAlert('Payment Entry Update Ho Gaya!', '✅');
+                    showAlert('Payment Entry Updated!', '✅');
                 });
-
             } else {
                 const newId = Date.now();
-
                 db.ref("records/" + newId).set({
                     id: newId,
                     clientId: client.id,
@@ -840,12 +836,6 @@ if ('serviceWorker' in navigator) {
                     showAlert('Payment Entry Done!', '💰');
                 });
             }
-
-            db.ref("records/" + id).remove();
-            resetEntryForm();
-            showAlert('Payment Entry Done!', '💰');
-            updateDashboard();
-            updatePendingBadge();
         };
 
         function resetEntryForm() {
@@ -930,7 +920,6 @@ if ('serviceWorker' in navigator) {
 
         function deleteEntry(id) {
             if (!confirm("Delete karna hai?")) return;
-
             db.ref("records/" + id).remove();
         }
 
@@ -1019,11 +1008,13 @@ if ('serviceWorker' in navigator) {
                 </div>
             `).join('');
         }
+
         document.querySelectorAll('.modal-overlay').forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) modal.classList.add('hidden');
             });
         });
+
         // --- QR Modal ---
         function openQRModal(client) {
             document.getElementById('qr-client-name').textContent = client.name;
@@ -1082,17 +1073,15 @@ if ('serviceWorker' in navigator) {
             const modal = document.getElementById('custom-modal');
             document.getElementById('modal-msg').textContent = msg;
             document.getElementById('modal-icon').textContent = icon;
-
             modal.classList.remove('hidden');
-
-
-
         }
+
         document.getElementById('custom-modal').addEventListener('click', (e) => {
             if (e.target.id === 'custom-modal') {
                 closeModal();
             }
         });
+
         function closeModal() { document.getElementById('custom-modal').classList.add('hidden'); }
 
         document.addEventListener('click', (e) => {
@@ -1100,13 +1089,7 @@ if ('serviceWorker' in navigator) {
             const searchInput = document.getElementById('entry-search');
             if (results && searchInput && !searchInput.contains(e.target)) results.classList.add('hidden');
         });
-        self.addEventListener("install", e => {
-        self.skipWaiting();
-        });
 
-self.addEventListener("fetch", e => {});
-    </script>
-    <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
