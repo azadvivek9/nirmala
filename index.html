@@ -28,13 +28,15 @@ if ('serviceWorker' in navigator) {
     <!-- Html2Canvas for downloading QR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- 🔥 Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<!-- 🔥 Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-    <script>
-       const firebaseConfig = {
+<script>
+    const firebaseConfig = {
         apiKey: "AIzaSyBzoSP46f_V9H0f7ZqgT_CpqgjAmLb8XVY",
         authDomain: "nirmala-finance.firebaseapp.com",
+        databaseURL: "https://nirmala-finance-default-rtdb.firebaseio.com",
         projectId: "nirmala-finance",
         storageBucket: "nirmala-finance.firebasestorage.app",
         messagingSenderId: "314008995118",
@@ -42,9 +44,9 @@ if ('serviceWorker' in navigator) {
         measurementId: "G-Q5DHFXN38N"
     };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+</script>
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
